@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-                        ##### KIRMIZI VE SARI FİLTRELEME ###
+                        ##### FILTERING FOR RED AND YELLOW COLORS ###
 import numpy as np
 import cv2
 
