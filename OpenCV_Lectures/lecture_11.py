@@ -6,26 +6,26 @@ import numpy as np
 
 def main():
     
-    kamera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(0)
     
-    fourcc =cv2.VideoWriter_fourcc(*'XVID')     # video formatı belirleme
+    fourcc =cv2.VideoWriter_fourcc(*'XVID')     # defining video format
     
-    kayit = cv2.VideoWriter("my_video.avi",fourcc,25,(640,480))   # kayıdın detayları
+    record = cv2.VideoWriter("my_video.avi",fourcc,25,(640,480))   # record details
     
     while True:
-        dogru,video= kamera.read()
+        dogru,video= camera.read()
         
-        #ters_goruntu =cv2.flip(video,0)  videoda ters goruntu için 
+        #reverse_frame =cv2.flip(video,0)  # to take reverse frame in video 
     
         if dogru == True:
-            kayit.write(video)
+            record.write(video)
         
-        cv2.imshow("kamera",video)
+        cv2.imshow("camera",video)
     
         if cv2.waitKey(25) & 0xFF == ord('e'):
             break
         
-    kamera.release()
+    camera.release()
     cv2.destroyAllWindows()
     
 if __name__ =="__main__":
