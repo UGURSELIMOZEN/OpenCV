@@ -1,0 +1,1 @@
+This folder includes all the basics and required examples for OpenCV library which is for Computer Vision
