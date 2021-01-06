@@ -2,29 +2,29 @@
 import cv2
 import numpy as np
 
-resim = cv2.imread("images.jpg")
-griresim = cv2.imread("images.jpg",0)
-cv2.imshow("changes",resim)
-cv2.imshow("griresim",griresim)
+image = cv2.imread("images.jpg")
+grayimage = cv2.imread("images.jpg",0)
+cv2.imshow("changes",image)
+cv2.imshow("grayimage",grayimage)
 
-print(resim)
-print("resmin tipi = " + str(type(resim)))
-print("resimin büyüklüğü = " + str(resim.size) + " piksel")
-print("resimin data tipi   = " + str(resim.dtype))
-print("resimin boyutu   = " + str(resim.shape))
+print(image )
+print("type of image = " + str(type(image )))
+print("size of image = " + str(image .size) + " piksel")
+print("data type of image   = " + str(image .dtype))
+print("shape of image   = " + str(image .shape))
 
-print("\ngri resmin büyüklüğü = " + str(griresim.size) + "piksel")
-print("gri resmin boyutu = " + str(griresim.shape))
-print("gri resmin tipi = " +str(type(griresim)))
-print("gri resimin data tipi   = " + str(griresim.dtype))
+print("\nsize of gray image = " + str(grayimage.size) + "pixel")
+print("shape of gray image = " + str(grayimage.shape))
+print("type of  gray image = " +str(type(grayimage)))
+print("data type of gray image  = " + str(grayimage.dtype))
 
-for i in range (0,3):                   #BU 3 BOYUTLU ARRAYDIR.
-    print(resim.item(150,150,i)) # 0 olursa mavi değeri ,, 1 olursa yeşil değeri,,
-                                # 2 olursa  o pikseldeki kırmızı değeri görünür. 
+for i in range (0,3):                   # 3D array 
+    print(image .item(150,150,i)) # 0 for blue value , 1 for green value ,
+                                # 2 for red value in that pixel . 
 
-print(resim[150,150])   # bgr değerlerini öğrenmek için 2.yöntem
+print(image [150,150])   # second way to learn bgr values
 
-print(griresim.item(150,150))   # burada ise bu pikseldeki gri değeri görünür.
-                                    #BU 2 BOYUTLU ARRAYDIR.
+print(grayimage.item(150,150))   # we see the gray value in the pixel here.
+                                    # 2D array.
 cv2.waitKey(0)
 cv2.destroyAllWindows()             # BGR -> BLUE GREEN RED  logic
