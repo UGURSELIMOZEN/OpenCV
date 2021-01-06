@@ -8,33 +8,33 @@ camera =cv2.VideoCapture(0)
 low  = np.array([20, 0, 0])
 high = np.array([37, 255, 255])     
 
-# dusuk  = np.array([20, 0, 0])
-# yuksek = np.array([37, 255, 255])     # sarı filtreleme için
+# low  = np.array([20, 0, 0])
+# high = np.array([37, 255, 255])     # filtering for yellow color
 
-# dusuk  = np.array([0, 0, 0])
-# yuksek = np.array([10, 255, 255])     # kırmızı filtreleme için
+# low  = np.array([0, 0, 0])
+# high = np.array([10, 255, 255])     # filtering for red color
 
-# dusuk  = np.array([85, 0, 0])
-# yuksek = np.array([100, 255, 255])     # Açık mavi filtreleme için
+# low  = np.array([85, 0, 0])
+# high = np.array([100, 255, 255])     # filtering for light blue color
 
-# dusuk  = np.array([45, 0, 0])
-# yuksek = np.array([75, 255, 255])     # yeşil filtreleme için
+# low  = np.array([45, 0, 0])
+# high = np.array([75, 255, 255])     # filtering for green color
 
 
 while True:
     
-    dogru,goruntu = camera.read()
+    ret,frame = camera.read()
     
-    hsv =cv2.cvtColor(goruntu,cv2.COLOR_BGR2HSV)
+    hsv =cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
     
-    mask =cv2.inRange(hsv,dusuk,yuksek)
+    mask =cv2.inRange(hsv,low,high)
     
-    son_resim = cv2.bitwise_and(goruntu,goruntu,mask = mask)
+    last_image = cv2.bitwise_and(frame,frame,mask = mask)
     
     cv2.imshow("hsv goruntusu",hsv)
-    cv2.imshow("bgr goruntu",goruntu)
+    cv2.imshow("bgr goruntu",frame)
     cv2.imshow("filtrelenmis goruntu",mask)
-    cv2.imshow("istenen_goruntu",son_resim)
+    cv2.imshow("istenen_goruntu",last_image)
     
     
     if cv2.waitKey(25)  & 0xFF == ord('e'):
