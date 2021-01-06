@@ -3,10 +3,10 @@
 import cv2
 import numpy as np
 
-kamera =cv2.VideoCapture(0)
+camera =cv2.VideoCapture(0)
 
-dusuk  = np.array([20, 0, 0])
-yuksek = np.array([37, 255, 255])     
+low  = np.array([20, 0, 0])
+high = np.array([37, 255, 255])     
 
 # dusuk  = np.array([20, 0, 0])
 # yuksek = np.array([37, 255, 255])     # sarı filtreleme için
@@ -23,7 +23,7 @@ yuksek = np.array([37, 255, 255])
 
 while True:
     
-    dogru,goruntu = kamera.read()
+    dogru,goruntu = camera.read()
     
     hsv =cv2.cvtColor(goruntu,cv2.COLOR_BGR2HSV)
     
@@ -40,7 +40,7 @@ while True:
     if cv2.waitKey(25)  & 0xFF == ord('e'):
         break
     
-kamera.release()
+camera.release()
 cv2.destroyAllWindows()
     
 
