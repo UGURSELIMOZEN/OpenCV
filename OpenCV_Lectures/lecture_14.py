@@ -3,22 +3,20 @@
 import cv2
 import numpy as np
 
-kamera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(0)
 
-dusuk =  np.array([26,110,110,])           # BUNLAR AYARLADIGIMIZ TRESHOLDLAR
-yuksek = np.array([31,255,255])     # HANGI RENGI ALGILAYACAK ONU BELIRLIYORUZ
+low =  np.array([26,110,110,])           # THE ARRANGED THRESHOLDS
+high = np.array([31,255,255])     # WE DEFINE THE COLOR WE WANT
 
 while True:
     
-    dogru,goruntu = kamera.read()
+    ret,square = camera.read()
     
-    hsv = cv2.cvtColor(goruntu,cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(square,cv2.COLOR_BGR2HSV)
     
-    mask =cv2.inRange(hsv,dusuk,yuksek)  # BURADA ISE HSV YE DONUSEN GORUNTUYU  
-                                         # UYGUN RENGE GORE FILTRELEMIS OLDUK                  
+    mask =cv2.inRange(hsv,low,high)  # We have filtered the square to the proper color that transformed based on hsv range. #                
    
-    son_resim =cv2.bitwise_and(goruntu,goruntu,mask =mask) # NIHAI GORUNTUYU 
-                # ALMAK ICIN GORUNTU VE MASKA VE ISLEMI UYGULADIK 
+    last_image =cv2.bitwise_and(square,square,mask =mask) # to get the last image we apply to and rule to square and mask objects. #
     
     kernel = np.ones((5,5),np.uint8)
     
@@ -30,17 +28,17 @@ while True:
     
     closining = cv2.morphologyEx(mask,cv2.MORPH_CLOSE,kernel)
     
-    #cv2.imshow("erosion",erosion)   # RESIMDE SIYAHLASTIRMA BIRAZ DAGITMA AMACLI
-    #cv2.imshow("diolation",diolation)   # RESIMDE BUTUNSELLIK (BEYAZLASTIRMA) AMACLI
+    #cv2.imshow("erosion",erosion)   # purpose of making image more black
+    #cv2.imshow("diolation",diolation)   # purpose of making image more white
     #cv2.imshow("mask",mask)
-    #cv2.imshow("filtreli goruntu",son_resim)
+    #cv2.imshow("filtered_square",last_image)
     
-    cv2.imshow("opening",opening)       # RESIMDEKI YAZILARI BELIRGINLESTIRME AMACLI
-    cv2.imshow("closining",closining)   #RESIMDEKI YAZILARI YOK ETME AMACLI
+    cv2.imshow("opening",opening)       # to make more clear all words in the image
+    cv2.imshow("closining",closining)   # to destroy all words in the image
     
     if cv2.waitKey(25) & 0xFF == ord('e'):
         break
     
     
-kamera.release()
+camera.release()
 cv2.destroyAllWindows()    
