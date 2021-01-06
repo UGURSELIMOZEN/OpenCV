@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# YENI KOD
+# new code
 import math
 import numpy as np
 import cv2
@@ -19,8 +19,8 @@ cap = cv2.VideoCapture(0)
 
 
 # Define the codec and create VideoWriter object
-#fourcc = cv2.VideoWriter_fourcc(*'XVID')
-#out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
 
 #calculate angle
 def angle(pt1,pt2,pt0):
@@ -49,7 +49,7 @@ while True:
             if(not(abs(cv2.contourArea(contours[i]))<200 or not(cv2.isContourConvex(approx)) )):            
                 x,y,w,h = cv2.boundingRect(contours[i])
                 # polygons
-                #cv2.putText(frame,str(len(approx)),(x,y),cv2.FONT_HERSHEY_SIMPLEX,scale,(0,255,0),2,cv2.LINE_AA)
+                cv2.putText(frame,str(len(approx)),(x,y),cv2.FONT_HERSHEY_SIMPLEX,scale,(0,255,0),2,cv2.LINE_AA)
                 if(vtc == 3):
                     cv2.putText(frame,'triangle',(x,y),cv2.FONT_HERSHEY_SIMPLEX,scale,(255,255,255),2,cv2.LINE_AA)
                                        
@@ -84,10 +84,10 @@ while True:
                         
 
         #Display the resulting frame
-        #out.write(frame)
+        out.write(frame)
         cv2.imshow('frame',frame)
         cv2.imshow('canny',canny)
-        if cv2.waitKey(25) & 0xFF == ord('e'):   # e tuşuna basınca video kapanır
+        if cv2.waitKey(25) & 0xFF == ord('e'):   # when pressing the 'e' key , video will be shut down.
             break
 
 #When everything done, release the capture
