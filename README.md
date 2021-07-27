@@ -7,7 +7,9 @@ This repository includes all projects , assignments , code papers and etc. relat
 
 1.Color detection
 
-2.Real time Object tracking
+2.Shape detection
 
-3.Shape detection
+3.Real time Object tracking
+
+
 
