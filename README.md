@@ -5,7 +5,7 @@ This repository includes all projects , assignments , code papers and etc. relat
 
 ## Project Objectives and Outcomes
 
-Color detection
-Real time Object tracking
-Shape detection
+1.Color detection
+2.Real time Object tracking
+3.Shape detection
 
