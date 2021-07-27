@@ -17,5 +17,5 @@ This repository includes all projects , assignments , code papers and etc. relat
 
 ### Project Tools
 
-In this Project I used Python with OpenCV and NumPy as language and libraries.
+In this project ,  I used Python with OpenCV and NumPy as language and libraries.
 
